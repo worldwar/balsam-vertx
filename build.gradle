@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+mainClassName = 'tw.zhuran.balsam.Main'
+
+repositories {
+    mavenLocal()
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.1"
+    }
+}
+
+dependencies {
+    compile 'com.google.guava:guava:20.0'
+    compile 'io.vertx:vertx-core:3.4.1'
+    compile 'io.vertx:vertx-web:3.4.1'
+    compile 'io.vertx:vertx-config:3.4.1'
+    compile 'io.vertx:vertx-rabbitmq-client:3.4.1'
+    compile 'org.jsoup:jsoup:1.10.3'
+    testCompile 'io.vertx:vertx-unit:3.4.1'
+    testCompile 'junit:junit:4.12'
+}
+
+idea {
+    module {
+        downloadJavadoc = false
+        downloadSources = false
+    }
+}
